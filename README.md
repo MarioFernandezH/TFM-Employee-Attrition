@@ -72,3 +72,76 @@ Ejecutar los notebooks en orden numerico:
 | 07_results_summary | Resumen consolidado | ~2 min |
 
 ## Estructura del Proyecto
+
+TFM-Employee-Attrition/
+|-- README.md
+|-- requirements.txt
+|-- .gitignore
+|-- LICENSE
+|
+|-- data/
+|   |-- raw/                          <-- datasets originales (no incluidos)
+|   |   |-- DOWNLOAD_INSTRUCTIONS.md
+|   |-- processed/                    <-- datos limpios para modelado
+|   |-- nlp/                          <-- datos NLP procesados
+|
+|-- notebooks/
+|   |-- 00_data_loading.ipynb         <-- Semana 1
+|   |-- 01_EDA.ipynb                  <-- Semana 2
+|   |-- 02_NLP_sentiment.ipynb        <-- Semana 3
+|   |-- 03_NLP_topics.ipynb           <-- Semana 3
+|   |-- 04_models_comparison.ipynb    <-- Semana 3-4
+|   |-- 05_explainability_SHAP.ipynb  <-- Semana 4
+|   |-- 06_explainability_LIME.ipynb  <-- Semana 4
+|   |-- 07_results_summary.ipynb      <-- Semana 4
+|
+|-- src/
+|   |-- config.py                     <-- configuracion centralizada
+|   |-- preprocessing.py              <-- funciones de limpieza
+|   |-- feature_engineering.py        <-- encoding, scaling, SMOTE
+|   |-- models.py                     <-- entrenamiento y evaluacion
+|   |-- nlp_pipeline.py               <-- sentimiento y clasificacion
+|   |-- explainability.py             <-- SHAP y LIME
+|   |-- utils.py                      <-- funciones auxiliares
+|
+|-- reports/
+|   |-- figures/                      <-- graficas del EDA
+|   |-- shap/                         <-- plots SHAP y LIME
+|   |-- tables/                       <-- tablas comparativas
+|
+|-- outputs/
+|   |-- risk_scores.csv               <-- output final del modelo
+|
+|-- tests/                            <-- tests unitarios
+|-- docs/                             <-- diccionario de variables y notas
+
+## Outputs
+
+- reports/figures/ -- Graficas del EDA
+- reports/shap/ -- Plots SHAP y LIME
+- reports/tables/ -- Tablas comparativas de modelos
+- outputs/risk_scores.csv -- Score de riesgo por empleado + factores principales
+
+## Tecnologias
+
+- **ML:** scikit-learn, XGBoost, imbalanced-learn
+- **NLP:** HuggingFace Transformers, spaCy, NLTK
+- **Interpretabilidad:** SHAP, LIME
+- **Visualizacion:** matplotlib, seaborn, Power BI
+- **Infraestructura:** Git/GitHub, Python 3
+
+## Autores
+
+| Nombre | Master | Rol principal |
+|--------|--------|---------------|
+| Mario Fernandez Hierro | Data Science | Pipeline ML/NLP, SHAP, validacion tecnica, dashboard |
+| Kalil Koury | Business Analytics | Valor empresarial, interpretacion de negocio, storytelling |
+
+## Contexto Academico
+
+TFM Interdisciplinar - Entrega: Julio 2026
+
+## Licencia
+
+MIT License - ver archivo LICENSE
+'@ | Out-File -Encoding utf8 "README.md"
