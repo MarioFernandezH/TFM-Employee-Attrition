@@ -73,6 +73,7 @@ Ejecutar los notebooks en orden numerico:
 
 ## Estructura del Proyecto
 
+```
 TFM-Employee-Attrition/
 |-- README.md
 |-- requirements.txt
@@ -114,6 +115,8 @@ TFM-Employee-Attrition/
 |
 |-- tests/                            <-- tests unitarios
 |-- docs/                             <-- diccionario de variables y notas
+
+``` 
 
 ## Outputs
 
