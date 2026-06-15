@@ -16,8 +16,8 @@ OUTPUTS = PROJECT_ROOT / "outputs"
 
 # === ARCHIVOS DE DATOS ===
 IBM_HR_FILE = DATA_RAW / "WA_Fn-UseC_-HR-Employee-Attrition.csv"
-EXTENDED_HR_FILE = DATA_RAW / "HR-Employee-Attrition.csv"
-GLASSDOOR_FILE = DATA_RAW / "employee_reviews.csv"
+EXTENDED_HR_FILE = DATA_RAW / "general_data.csv"
+GLASSDOOR_FILE = DATA_RAW / "glassdoor_reviews.csv"
 
 # === REPRODUCIBILIDAD ===
 RANDOM_SEED = 42

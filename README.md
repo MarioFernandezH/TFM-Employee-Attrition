@@ -51,7 +51,7 @@ Ver instrucciones completas en [data/raw/DOWNLOAD_INSTRUCTIONS.md](data/raw/DOWN
 ```bash
 kaggle datasets download pavansubhasht/ibm-hr-analytics-attrition-dataset -p data/raw/ --unzip
 kaggle datasets download vjchoudhary7/hr-analytics-case-study -p data/raw/ --unzip
-kaggle datasets download andreshg/employee-reviews -p data/raw/ --unzip
+kaggle datasets download davidgauthier/glassdoor-job-reviews -p data/raw/ --unzip
 ```
 
 **Opcion manual:** descargar desde los enlaces en DOWNLOAD_INSTRUCTIONS.md y colocar los CSV en data/raw/.
