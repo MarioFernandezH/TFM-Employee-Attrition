@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# === TFM-specific ===
+data/raw/*.csv
+data/raw/*.xlsx
+data/raw/*.zip
+data/processed/*.csv
+data/nlp/*.csv
+*.pbix
+models/*.pkl
+models/*.joblib
+.ipynb_checkpoints/
