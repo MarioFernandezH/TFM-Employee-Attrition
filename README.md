@@ -148,3 +148,44 @@ TFM Interdisciplinar - Entrega: Julio 2026
 
 MIT License - ver archivo LICENSE
 '@ | Out-File -Encoding utf8 "README.md"
+
+## Datasets Utilizados
+
+### 1. IBM HR Analytics Employee Attrition & Performance ★ PRINCIPAL
+
+| Campo | Detalle |
+|-------|---------|
+| **URL** | https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset |
+| **Archivo** | `WA_Fn-UseC_-HR-Employee-Attrition.csv` |
+| **Filas × Columnas** | 1,470 × 35 |
+| **Target** | `Attrition` (Yes/No) — desbalanceado 84/16 |
+| **Licencia** | CC0: Public Domain |
+| **Fecha de descarga** | 2026-06-17 |
+| **Limitaciones** | Dataset **sintético** generado por IBM Watson Analytics. Los patrones pueden no reflejar realidades organizacionales específicas. Muestra de una sola empresa ficticia con posible sesgo cultural USA. Ampliamente citado en la literatura académica como benchmark del sector. |
+
+### 2. HR Analytics Case Study (Validación Externa)
+
+| Campo | Detalle |
+|-------|---------|
+| **URL** | https://www.kaggle.com/datasets/vjchoudhary7/hr-analytics-case-study |
+| **Archivos** | Múltiples CSV unidos por `EmployeeID` (`general_data.csv`, `employee_survey_data.csv`, `manager_survey_data.csv`, `in_time.csv`, `out_time.csv`) |
+| **Filas × Columnas** | 4,410 × ~28 (tras join) |
+| **Target** | `Attrition` (Yes/No) |
+| **Licencia** | CC BY-NC-SA 4.0 |
+| **Fecha de descarga** | 2026-06-17 |
+| **Limitaciones** | Requiere join de múltiples archivos. Estructura diferente al IBM HR — necesita preprocesamiento adicional. Se usa exclusivamente como conjunto de validación externa para verificar que los modelos no overfittean en el dataset principal. |
+
+### 3. Glassdoor Employee Reviews (NLP)
+
+| Campo | Detalle |
+|-------|---------|
+| **URL** | https://www.kaggle.com/datasets/davidgauthier/glassdoor-job-reviews |
+| **Archivo** | `glassdoor_reviews.csv` |
+| **Filas × Columnas** | ~67,000 × 18 |
+| **Target** | Sentimiento implícito (no hay label explícito) |
+| **Licencia** | CC0: Public Domain |
+| **Fecha de descarga** | 2026-06-17 |
+| **Limitaciones** | Datos scrapeados de Glassdoor — sesgo de autoselección (empleados insatisfechos tienden a dejar más reseñas). No tiene variable `Attrition` directa; se usa para entrenar/validar el pipeline NLP de análisis de sentimiento y clasificación temática. Textos en inglés. |
+
+> **Nota:** Los archivos CSV no se incluyen en el repositorio por términos de licencia y tamaño.
+> Descárgalos desde las URLs indicadas y colócalos en `data/raw/` antes de ejecutar los notebooks.
