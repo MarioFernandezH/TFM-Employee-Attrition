@@ -188,4 +188,3 @@ MIT License - ver archivo LICENSE
 | **Limitaciones** | Datos scrapeados de Glassdoor — sesgo de autoselección (empleados insatisfechos tienden a dejar más reseñas). No tiene variable `Attrition` directa; se usa para entrenar/validar el pipeline NLP de análisis de sentimiento y clasificación temática. Textos en inglés. |
 
 > **Nota:** Los archivos CSV no se incluyen en el repositorio por términos de licencia y tamaño.
-> Descárgalos desde las URLs indicadas y colócalos en `data/raw/` antes de ejecutar los notebooks.
