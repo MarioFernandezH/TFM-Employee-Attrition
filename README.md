@@ -75,48 +75,31 @@ Ejecutar los notebooks en orden numerico:
 
 ```
 TFM-Employee-Attrition/
+
 |-- README.md
+
 |-- requirements.txt
+
 |-- .gitignore
+
 |-- LICENSE
-|
+
 |-- data/
-|   |-- raw/                          <-- datasets originales (no incluidos)
-|   |   |-- DOWNLOAD_INSTRUCTIONS.md
-|   |-- processed/                    <-- datos limpios para modelado
-|   |-- nlp/                          <-- datos NLP procesados
-|
+
+|   |-- raw/                     <-- datasets originales (ver DOWNLOAD_INSTRUCTIONS)
+
+|   |-- processed/               <-- datos limpios (se genera en EDA)
+
 |-- notebooks/
-|   |-- 00_data_loading.ipynb         <-- Semana 1
-|   |-- 01_EDA.ipynb                  <-- Semana 2
-|   |-- 02_NLP_sentiment.ipynb        <-- Semana 3
-|   |-- 03_NLP_topics.ipynb           <-- Semana 3
-|   |-- 04_models_comparison.ipynb    <-- Semana 3-4
-|   |-- 05_explainability_SHAP.ipynb  <-- Semana 4
-|   |-- 06_explainability_LIME.ipynb  <-- Semana 4
-|   |-- 07_results_summary.ipynb      <-- Semana 4
-|
-|-- src/
-|   |-- config.py                     <-- configuracion centralizada
-|   |-- preprocessing.py              <-- funciones de limpieza
-|   |-- feature_engineering.py        <-- encoding, scaling, SMOTE
-|   |-- models.py                     <-- entrenamiento y evaluacion
-|   |-- nlp_pipeline.py               <-- sentimiento y clasificacion
-|   |-- explainability.py             <-- SHAP y LIME
-|   |-- utils.py                      <-- funciones auxiliares
-|
+
+|   |-- 00_data_loading.ipynb    <-- carga y exploracion inicial
+
 |-- reports/
-|   |-- figures/                      <-- graficas del EDA
-|   |-- shap/                         <-- plots SHAP y LIME
-|   |-- tables/                       <-- tablas comparativas
-|
-|-- outputs/
-|   |-- risk_scores.csv               <-- output final del modelo
-|
-|-- tests/                            <-- tests unitarios
-|-- docs/                             <-- diccionario de variables y notas
+
+|   |-- Diccionario_Variables_IBM_HR.xlsx
 
 ``` 
+*La estructura se ampliará a medida que avance el proyecto (src/, reports/figures/, etc.)*
 
 ## Outputs
 
