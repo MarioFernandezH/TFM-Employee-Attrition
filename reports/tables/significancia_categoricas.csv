@@ -1,0 +1,8 @@
+Variable,Chi2,P_value,Grados_libertad,Significativa
+OverTime,87.56,0.0,1,Si
+JobRole,86.19,0.0,8,Si
+MaritalStatus,46.16,0.0,2,Si
+BusinessTravel,24.18,6e-06,2,Si
+EducationField,16.02,0.006774,5,Si
+Department,10.8,0.004526,2,Si
+Gender,1.12,0.290572,1,No
