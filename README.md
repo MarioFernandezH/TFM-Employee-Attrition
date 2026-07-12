@@ -1,17 +1,23 @@
 # Sistema Predictivo de Riesgo de Rotacion Laboral
-TFM: Sistema predictivo de riesgo de rotación laboral mediante ML y NLP aplicado a datos de encuestas organizacionales
+TFM: Sistema predictivo de riesgo de rotación laboral mediante ML y NLP aplicado a datos de 
+encuestas organizacionales
 
 ### Trabajo de Fin de Master - Julio 2026
 
-**Mario Fernandez Hierro** - Master en Data Science
+**Mario Fernández Hierro** - Master en Data Science
 **Kalil Koury** - Master en Business Analytics
+**Rafael Concepción** - Master en Business Analytics
 
 ---
 
 ## Descripcion
 
-Pipeline de Machine Learning y NLP para predecir el riesgo de rotacion
-de empleados a partir de datos de encuestas organizacionales.
+Este proyecto desarrolla un sistema predictivo para identificar empleados con
+riesgo de rotación (attrition) en una organización, combinando modelos de
+clasificación de Machine Learning, análisis de texto con NLP, e
+interpretabilidad explicable (XAI). Con un objetivo doble: predecir qué 
+empleados presentan mayor riesgo de abandono y explicar los factores que 
+impulsan ese riesgo, de forma que RRHH pueda tomar decisiones accionables.
 
 El sistema combina variables estructuradas (datos de RRHH) con variables
 no estructuradas (respuestas abiertas de encuestas) para generar un score
@@ -22,54 +28,30 @@ Incluye comparativa de 5 modelos (Logistic Regression, Random Forest,
 XGBoost, SVM, MLP), analisis de sentimiento con HuggingFace,
 interpretabilidad con SHAP/LIME, y cuantificacion del valor empresarial.
 
-## Requisitos del Sistema
+El enfoque prioriza la **detección (Recall)** de los empleados en riesgo sobre
+la precisión, dado el coste asimétrico de los errores: no anticipar la marcha
+de un empleado es más costoso que una falsa alerta, que se resuelve con una
+conversación de seguimiento de valor para el empleado.
 
-- Python 3.13
-- RAM: minimo 8 GB (HuggingFace Transformers requiere memoria)
-- GPU: opcional (acelera el pipeline NLP pero no es obligatorio)
-- Sistema operativo: Windows, Linux o macOS
+---
 
-## Instalacion
+## Resultado principal
 
-```bash
-git clone https://github.com/MarioFernandezH/TFM-Employee-Attrition.git
-cd TFM-Employee-Attrition
-python -m venv venv
-.\venv\Scripts\activate         # Windows
-# source venv/bin/activate      # Linux/macOS
-pip install -r requirements.txt
-python -m spacy download en_core_web_sm
-```
+Tras entrenar y comparar cinco modelos de clasificación bajo la misma
+estrategia de manejo del desbalanceo, el modelo seleccionado es la
+**Regresión Logística**:
 
-## Descarga de Datos
+| Métrica | Valor |
+|---------|-------|
+| Recall (clase abandono) | 0.68 |
+| AUC-ROC | 0.816 |
+| Validación cruzada (5-fold) | AUC 0.821 ± 0.050 |
 
-Los datasets no estan incluidos por terminos de uso de Kaggle.
-Ver instrucciones completas en [data/raw/DOWNLOAD_INSTRUCTIONS.md](data/raw/DOWNLOAD_INSTRUCTIONS.md).
+El modelo más simple resultó el más eficaz, con la ventaja añadida de ofrecer
+interpretabilidad nativa a través de sus coeficientes, reforzada visualmente
+con SHAP y LIME.
 
-**Opcion rapida (requiere Kaggle CLI configurado):**
-
-```bash
-kaggle datasets download pavansubhasht/ibm-hr-analytics-attrition-dataset -p data/raw/ --unzip
-kaggle datasets download vjchoudhary7/hr-analytics-case-study -p data/raw/ --unzip
-kaggle datasets download davidgauthier/glassdoor-job-reviews -p data/raw/ --unzip
-```
-
-**Opcion manual:** descargar desde los enlaces en DOWNLOAD_INSTRUCTIONS.md y colocar los CSV en data/raw/.
-
-## Ejecucion
-
-Ejecutar los notebooks en orden numerico:
-
-| Notebook | Descripcion | Estado |
-|----------|-------------|-----------------|
-| 00_data_loading | Carga y exploracion inicial | Completado |
-| 01_EDA | Analisis exploratorio completo | En proceso |
-| 02_NLP_sentiment | Analisis de sentimiento | Pendiente |
-| 03_NLP_topics | Clasificacion tematica | Pendiente |
-| 04_models_comparison | Entrenamiento de 5 modelos ML | Pendiente |
-| 05_explainability_SHAP | Interpretabilidad SHAP | Pendiente |
-| 06_explainability_LIME | Interpretabilidad LIME | Pendiente |
-| 07_results_summary | Resumen consolidado | Pendiente |
+---
 
 ## Estructura del Proyecto
 
@@ -86,48 +68,138 @@ TFM-Employee-Attrition/
 
 |-- data/
 
-|   |-- raw/                     <-- datasets originales (ver DOWNLOAD_INSTRUCTIONS)
+|   |-- raw/                         <-- datasets originales (ver DOWNLOAD_INSTRUCTIONS)
 
-|   |-- processed/               <-- datos limpios (se genera en EDA)
+|   |-- processed/                   <-- datos limpios (se generaron en EDA)
 
 |-- notebooks/
 
-|   |-- 00_data_loading.ipynb    <-- carga y exploracion inicial
+|   |-- 00_data_loading.ipynb        <-- carga y exploración inicial
+|   |-- 01_EDA.ipynb                 <-- análisis exploratorio de los datos
+|   |-- 02_NLP_sentiment.ipynb       <-- análisis de sentimiento (DistilBERT)
+|   |-- 03_NLP_topics.ipynb          <-- clasificación temática zero-shot
+|   |-- 04_models_comparison.ipynb   <-- entrenamiento y comparativa de los modelos
+|   |-- 05_SHAP_LIME.ipynb           <-- interpretabilidad
+|   |-- 06_validacion_externa.ipynb  <-- análisis de compatibilidad con dataset externo
 
 |-- reports/
 
 |   |-- Diccionario_Variables_IBM_HR.xlsx
+|   |-- figures/					 <-- gráficos del EDA y modelos
+|   |-- shap/					     <-- plots de interpretabilidad
+|   |-- tables/					     <-- tablas de métricas y coeficientes
+
+|-- outputs/
+
+|   |-- risk_scores.csv				 <-- predicciones de riesgo para el dashbpard
 
 ``` 
-*La estructura se ampliará a medida que avance el proyecto (src/, reports/figures/, etc.)*
 
-## Tecnologias
+---
 
-- **ML:** scikit-learn, XGBoost, imbalanced-learn
-- **NLP:** HuggingFace Transformers, spaCy, NLTK
+## Datasets utilizados
+
+- **IBM HR Analytics** (1.470 registros, 35 variables) — dataset principal para
+  el entrenamiento y evaluación de los modelos.
+- **Glassdoor Reviews** (~67.000 reseñas) — corpus textual para el pipeline de
+  NLP (sentimiento y clasificación temática).
+- **Extended HR** (~4.410 registros) — planteado para validación externa. El
+  análisis de compatibilidad (notebook 06) reveló que carece de variables
+  predictivas claves del modelo (OverTime y las dimensiones de satisfacción),
+  por lo que la validación externa directa no resultó viable. Se documenta como
+  limitación del estudio.
+
+- Los datasets no se incluyen en el repositorio por su tamaño y licencia.
+- **Nota:** El IBM HR es un dataset sintetico generado por IBM Watson Analytics. 
+  Es el benchmark estandar del sector para modelos de attrition.
+
+---
+
+## Metodología
+
+1. **Carga y limpieza** de los datos, eliminación de variables constantes y
+   codificación (one-hot encoding).
+2. **Análisis exploratorio (EDA)** con pruebas de significancia estadística.
+3. **Pipeline de NLP** sobre reseñas: análisis de sentimiento con DistilBERT y
+   clasificación temática zero-shot con BART.
+4. **Entrenamiento de 5 modelos**: Regresión Logística, Random Forest, XGBoost,
+   SVM (kernel RBF) y MLP (red neuronal). Manejo homogéneo del desbalanceo
+   mediante `class_weight='balanced'` (o `scale_pos_weight` en XGBoost).
+5. **Selección del modelo** priorizando el Recall, con análisis del umbral de
+   decisión (0.55 operativo / 0.35 para cobertura máxima).
+6. **Validación cruzada estratificada** (5-fold) para confirmar la robustez.
+7. **Interpretabilidad** con SHAP (global e individual) y LIME.
+8. **Generación del output** (`risk_scores.csv`) para el dashboard de RRHH.
+
+---
+
+## Stack técnico
+
+- **Lenguaje:** Python 3
+- **ML / Datos:** scikit-learn, XGBoost, pandas, numpy
+- **NLP:** HuggingFace Transformers (DistilBERT, BART)
 - **Interpretabilidad:** SHAP, LIME
-- **Visualizacion:** matplotlib, seaborn, Power BI
-- **Infraestructura:** Git/GitHub, Python 3
+- **Visualización:** matplotlib, Power BI
+- **Entorno:** Jupyter Notebook, entorno virtual (venv)
 
-## Datasets
+---
 
-| Dataset | Filas | Target | Uso en el proyecto |
-|---------|-------|--------|--------------------|
-| [IBM HR Analytics](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset) -principal- | 1,470 | Attrition (Yes/No) | Dataset principal - entrenamiento ML |
-| [HR Analytics Case Study](https://www.kaggle.com/datasets/vjchoudhary7/hr-analytics-case-study) | 4,410 | Attrition (Yes/No) | Validacion externa |
-| [Glassdoor Job Reviews](https://www.kaggle.com/datasets/davidgauthier/glassdoor-job-reviews) | ~67,000 | Sentimiento implicito | Pipeline NLP |
+## Reproducción
 
-**Nota:** El IBM HR es un dataset sintetico generado por IBM Watson Analytics. Es el benchmark estandar del sector para modelos de attrition y esta ampliamente citado en la literatura academica, pero sus patrones pueden no reflejar realidades organizacionales especificas. Los datos de Glassdoor tienen sesgo de autoseleccion (empleados insatisfechos tienden a dejar mas reseñas).
+Para reproducir los resultados:
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/MarioFernandezH/TFM-Employee-Attrition.git
+cd TFM-Employee-Attrition
+
+# 2. Crear y activar el entorno virtual
+python -m venv venv
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
+# 3. Instalar dependencias
+pip install -r requirements.txt
+
+# 4. Colocar los datasets en data/raw/
+```
+
+- **Nota:** Todos los modelos usan `random_state=42` para garantizar la 
+  reproducibilidad.
+
+---
+
+## Interpretabilidad y valor de negocio
+
+El sistema no se limita a predecir, explica. Mediante SHAP se identifican los
+principales impulsores de la rotación (horas extra, antigüedad, estado civil,
+rol) tanto a nivel global como individual. El gráfico waterfall permite a RRHH
+comprender por qué un empleado en concreto está en riesgo y qué factor abordar en
+una conversación de seguimiento, convirtiendo un score abstracto en una acción
+concreta.
+
+---
+
+## Limitaciones y trabajo futuro
+
+- La validación externa con el dataset Extended no fue viable por incompatibilidad
+  de esquemas (variables claves ausentes), limitación común entre datasets
+  públicos de People Analytics. La robustez del modelo se sustenta en la
+  validación cruzada interna.
+- Se propone como trabajo futuro la validación en datos organizacionales con
+  esquema homogéneo, así como la integración de las features de NLP en el modelo
+  predictivo estructurado.
+
+---
 
 ## Autores
 
 | Nombre | Master | Rol principal |
 |--------|--------|---------------|
-| Mario Fernandez Hierro | Data Science | Pipeline ML/NLP, SHAP, validacion tecnica, dashboard |
-| Kalil Koury | Business Analytics | Valor empresarial, interpretacion de negocio, storytelling |
+| Mario Fernandez Hierro | Data Science | Pipeline técnico, modelos, NLP, XAI |
+| Kalil Koury | Business Analytics | EDA, interpretación de negocio |
+| Rafael Concepción | Business Analytics | Marco teórico, ROI, dashboard |
 
 TFM Interdisciplinar - Entrega: Julio 2026
-
-## Licencia
-
-MIT License - ver archivo LICENSE
