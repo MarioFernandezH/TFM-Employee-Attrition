@@ -1,0 +1,41 @@
+cons,cons_sentiment,cons_score,topic,topic_score
+Bureaucratic and matrix reporting lines can lead to political infighting and ambiguity of message.,NEGATIVE,0.9937,workload and stress,0.4726
+"Employees are not valued much in terms of salary, training, or promotions.  I feel more like a resource or an employee number than I feel like a person who matters to the company.",NEGATIVE,0.9996,salary and compensation,0.4147
+"No benefits provided
+Low pay
+Stressful
+Work hours depend on visitors",NEGATIVE,0.9982,workload and stress,0.8715
+"Career growth is limited within Operations (one can only go so far) so look around within the business after putting in your time...pay is ""decent"" however one will only receive a significant raise if they are well liked/needed and threaten to leave OR if one leaves altogether for over a year and then returns.",NEGATIVE,0.9962,career growth and development,0.5878
+Can be a bit hierarchical  and career progression is a bit of a red herring,NEGATIVE,0.9984,career growth and development,0.6538
+"Small bonus, long hours, constant busy ‘season’",NEGATIVE,0.9637,workload and stress,0.8476
+No cons found yet in this years,POSITIVE,0.9388,career growth and development,0.2048
+Bureaucracy of the corporate world.,NEGATIVE,0.9707,workload and stress,0.465
+Hectic workload but new technologies can be explored and learned.,POSITIVE,0.9903,workload and stress,0.8586
+"low paid salary, lots of work and responsibilities",NEGATIVE,0.9844,workload and stress,0.6643
+"1. Try to change the management and stop to glorify people without skills or qualities 
+2. Very bad shifts ! Without any sense! You really don't need to do that hours because you have moments without volume of work. 
+3. Stop to have team leaders that they are thinking that they are the best and God. 
+4. Payroll is just horrible. Every month they are doing ""mistakes"" with your money, of course paying you less.
+5.  Stuff unfairly treated with management preferences",NEGATIVE,0.999,management and leadership,0.4647
+"Minimum Wage
+Expect you to do the job of 5 people
+Very Cliquey",NEGATIVE,0.9794,salary and compensation,0.5753
+Not responsive to certain inquiries,NEGATIVE,0.9998,management and leadership,0.1754
+Slow processes due to size of the company,NEGATIVE,0.9997,workload and stress,0.3917
+Junior employees are not valued as much as middle management employees,NEGATIVE,0.9995,management and leadership,0.3313
+long working hours which is to be expected,NEGATIVE,0.9657,workload and stress,0.8963
+"Top heavy, wants to be top tier firm but cannot follow up with action",NEGATIVE,0.997,workload and stress,0.3531
+Need more hours in order to take care of family.,NEGATIVE,0.9933,workload and stress,0.565
+"No benefits until you are a manager. Breakfast is advertised as a benefit but there is no variety, not enough food for everyone and no hot food. HR needs a big overhaul, not approachable or welcoming. Far too long hours. Don't work here if you want any flexibility. Don't even think about being 2 minutes late in or back from lunch. Management / Partners are not approachable. A lot of senior people are very immature and unprofessional. Very cliquey environment.",NEGATIVE,0.9986,workload and stress,0.4454
+"Absolutely no emphasis placed on staff progression or development.  Even when I asked outright, I was not able to site down with management to discuss the best approach to progress within the company. Progression doesn't appear to be a part of this Leader's culture and you are expected to remain in your existing role until you leave. Perhaps I am not ""Leaders material"" or the type of employee they are looking for..... That honestly how I am left feeling",NEGATIVE,0.9978,career growth and development,0.7714
+The industry is exeperiencing unpredencted change at the moment.  It's difficult  to work for a firm whose goal is to lead the industry through one of the most signifcant macro-economic events in history.  The firm's world headquarters are located in the same city that I live and that means that I have to drive to work.,POSITIVE,0.9726,workload and stress,0.4491
+"-> No growth opportunities, toxic for freshers 
+-> You don't learn much",NEGATIVE,0.9992,workload and stress,0.243
+Long hours and a lot of pressure during the busy season,NEGATIVE,0.9845,workload and stress,0.9773
+Salary hike is not fair,NEGATIVE,0.9995,salary and compensation,0.8875
+Repetitive although get to specialise in an area,NEGATIVE,0.9992,career growth and development,0.2642
+IT could be a bit outdated,NEGATIVE,0.9998,management and leadership,0.1888
+Bad working culture and loads of politics between all levels of management and staff.,NEGATIVE,0.9998,management and leadership,0.3804
+In the Customer Support Centre each day can be challenging but varied when dealing with demanding loyal customers on a daily basis but overall helping the customers is the main priority for the business to feel good and is rewarding especially during the busy xmas trading period,POSITIVE,0.9998,workload and stress,0.4352
+Lack of long-term business vision and commitment to innovation,NEGATIVE,0.9997,company culture,0.3822
+"Competitive, low pay, no upward movement",NEGATIVE,0.9436,salary and compensation,0.8587

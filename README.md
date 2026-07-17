@@ -72,6 +72,8 @@ TFM-Employee-Attrition/
 
 |   |-- processed/                   <-- datos limpios (se generaron en EDA)
 
+|   |-- nlp/                   		 <-- datasets del análisis de textos
+
 |-- notebooks/
 
 |   |-- 00_data_loading.ipynb        <-- carga y exploración inicial
@@ -85,6 +87,7 @@ TFM-Employee-Attrition/
 |-- reports/
 
 |   |-- Diccionario_Variables_IBM_HR.xlsx
+|   |-- Dashboard_TFM.pdf
 |   |-- figures/					 <-- gráficos del EDA y modelos
 |   |-- shap/					     <-- plots de interpretabilidad
 |   |-- tables/					     <-- tablas de métricas y coeficientes
@@ -92,6 +95,8 @@ TFM-Employee-Attrition/
 |-- outputs/
 
 |   |-- risk_scores.csv				 <-- predicciones de riesgo para el dashbpard
+|   |-- shap_local.csv				 <-- contribuciones SHAP por empleado (drivers individuales)
+|   |-- empleados_contexto.csv		 <-- p
 
 ``` 
 
@@ -129,7 +134,8 @@ TFM-Employee-Attrition/
    decisión (0.55 operativo / 0.35 para cobertura máxima).
 6. **Validación cruzada estratificada** (5-fold) para confirmar la robustez.
 7. **Interpretabilidad** con SHAP (global e individual) y LIME.
-8. **Generación del output** (`risk_scores.csv`) para el dashboard de RRHH.
+8. **Generación del output** (`risk_scores.csv` y `shap_local.csv`) desde el mismo
+   conjunto de test, para garantizar la trazabilidad empleado a empleado en el dashboard.
 
 ---
 
@@ -179,6 +185,23 @@ rol) tanto a nivel global como individual. El gráfico waterfall permite a RRHH
 comprender por qué un empleado en concreto está en riesgo y qué factor abordar en
 una conversación de seguimiento, convirtiendo un score abstracto en una acción
 concreta.
+
+---
+
+## Dashboard (Power BI)
+
+Los resultados se presentan en un dashboard interactivo de 4 páginas
+(Portada, Vista Ejecutiva, Voz del Empleado, Alerta y Acción) construido
+sobre el output del modelo.
+
+- **Enlace (solo lectura):** 
+https://app.powerbi.com/view?r=eyJrIjoiYWU5MzVmMjUtNGZmYS00ZWMzLTgwNWItN2IzOWZjMzE0ZTgxIiwidCI6Ijc4NWM5NmYxLTZkMmItNGNmZC1hMTQ3LTUzMTU5NWU1Yjg0NiJ9
+- Respaldo en PDF disponible en `reports/` (`Dashboard_TFM.pdf`).
+
+El dashboard combina el score de riesgo por empleado, los drivers globales
+e individuales (SHAP), y la voz del empleado (NLP), respetando la
+triangulación entre fuentes independientes (IBM HR y Glassdoor no se cruzan
+a nivel individual).
 
 ---
 
