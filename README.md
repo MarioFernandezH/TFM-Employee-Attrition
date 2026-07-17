@@ -96,7 +96,7 @@ TFM-Employee-Attrition/
 
 |   |-- risk_scores.csv				 <-- predicciones de riesgo para el dashbpard
 |   |-- shap_local.csv				 <-- contribuciones SHAP por empleado (drivers individuales)
-|   |-- empleados_contexto.csv		 <-- p
+|   |-- empleados_contexto.csv		 <-- variables de contexto por empleado (Department, etc.)
 
 ``` 
 
